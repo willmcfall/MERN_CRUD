@@ -5,14 +5,17 @@
 ## Scope
 
 ## Tools / Technologies
-+ Mongodb
++ MongoDB
     - mongoose
 + Express
     - axios
+    - body-parser
+    - cors 
 + REACT
     - react-router-dom
     - bootstrap
-+ Node
++ Node.js
+    - nodemon
 
 
 
