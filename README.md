@@ -17,5 +17,9 @@
 + Node.js
     - nodemon
 
-
+## Resources
++ https://www.youtube.com/watch?v=qvBZevK1HPo&list=PL2dKqfImstaRbG8WIBkeHyV1ic5dyiEMj&index=1
++ https://www.youtube.com/watch?v=_02zK1D4brk&list=PL2dKqfImstaRbG8WIBkeHyV1ic5dyiEMj&index=4&t=109s
++ https://www.youtube.com/watch?v=WT67-OETeGU&list=PL2dKqfImstaRbG8WIBkeHyV1ic5dyiEMj&index=2
++ https://www.youtube.com/watch?v=GIITXvYD7pc&list=PL2dKqfImstaRbG8WIBkeHyV1ic5dyiEMj&index=4
 
