@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from 'axios';
 
 export default class CreateTodo extends Component {
   constructor(props) {
@@ -44,13 +45,26 @@ export default class CreateTodo extends Component {
   onSubmit(e) {
     e.preventDefault();
 
-    // ADD SUBMIT LOGIC HERE
+    // Console logs the submitted form values
     console.log(`Form submitted`);
     console.log(`Todo Description: ${this.state.todo_description}`);
     console.log(`Todo Responsible: ${this.state.todo_responsible}`);
     console.log(`Todo Priority: ${this.state.todo_priority}`);
     console.log(`Todo Completed: ${this.state.todo_completed}`);
 
+    // Sends the form values to the backend 
+    const newTodo = {
+      todo_description: this.state.todo_description,
+      todo_responsible: this.state.todo_responsible,
+      todo_priority: this.state.todo_priority,
+      todo_completed: this.state.todo_completed
+    }
+
+    axios.post('http://localhost:4000/todos/add', newTodo).then(
+      res => console.log(res.data)
+    );
+
+    // Resets the state following the submission of the form values
     this.setState({
       todo_description: "",
       todo_responsible: "",
@@ -62,7 +76,7 @@ export default class CreateTodo extends Component {
   render() {
     return (
       <div style={{ marginTop: 20 }}>
-        <h3>Create New Todo </h3>
+        <h3>Create Todo</h3>
         {/* Creates form html elements for accessing user input */}
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
