@@ -27,3 +27,4 @@ App Development
 
 App Deployment
 + https://coursework.vschool.io/deploying-mern-with-heroku/
++ https://www.youtube.com/watch?v=N42pkl-aIIQ
