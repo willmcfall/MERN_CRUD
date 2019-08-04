@@ -5,14 +5,25 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const todoRoutes = express.Router();
 const Todo = require("./model/todo.model");
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 // Starts server and listens for requests on defined port
 app.use(cors());
 app.use(bodyParser.json());
-app.listen(PORT, function() {
-  console.log("Successfully started server on port: " + PORT + "....nice!");
+
+
+// HEROKU DEPLOYMENT configuration ... other imports 
+const path = require("path")
+
+// HEROKU DEPLOYMENT configuration ... other app.use middleware 
+app.use(express.static(path.join(__dirname, "client", "build")))
+
+
+// HEROKU DEPLOYMENT configuration ... before your app.listen(), add this:
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
+
 
 // Establishes server routing
 app.use("/todos", todoRoutes);
@@ -75,9 +86,17 @@ todoRoutes.route("/update/:id").post(function(req, res) {
   });
 });
 
+
+app.listen(PORT, function() {
+  console.log("Successfully started server on port: " + PORT + "....nice!");
+});
+
+
 // Starts connection with mongoDB database
-mongoose.connect("mongodb://127.0.0.1:27017/todos", { useNewURLParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/todos");
 const connection = mongoose.connection;
 connection.once("open", function() {
   console.log("Successfully started connection to MongoDB database .... nice!");
 });
+
+
