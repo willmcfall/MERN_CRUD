@@ -11,20 +11,6 @@ const PORT = process.env.PORT || 4000;
 app.use(cors());
 app.use(bodyParser.json());
 
-
-// HEROKU DEPLOYMENT configuration ... other imports 
-const path = require("path")
-
-// HEROKU DEPLOYMENT configuration ... other app.use middleware 
-app.use(express.static(path.join(__dirname, "client", "build")))
-
-
-// HEROKU DEPLOYMENT configuration ... before your app.listen(), add this:
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
-
-
 // Establishes server routing
 app.use("/todos", todoRoutes);
 
@@ -86,6 +72,18 @@ todoRoutes.route("/update/:id").post(function(req, res) {
   });
 });
 
+// HEROKU DEPLOYMENT configuration ... other imports 
+const path = require("path")
+
+// HEROKU DEPLOYMENT configuration ... other app.use middleware 
+app.use(express.static(path.join(__dirname, "client", "build")))
+
+
+// HEROKU DEPLOYMENT configuration ... before your app.listen(), add this:
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+
 
 app.listen(PORT, function() {
   console.log("Successfully started server on port: " + PORT + "....nice!");
@@ -93,7 +91,7 @@ app.listen(PORT, function() {
 
 
 // Starts connection with mongoDB database
-mongoose.connect(process.env.MONGODB_URI|| "mongodb://127.0.0.1:27017/todos");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/todos");
 const connection = mongoose.connection;
 connection.once("open", function() {
   console.log("Successfully started connection to MongoDB database .... nice!");
