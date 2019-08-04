@@ -93,7 +93,7 @@ app.listen(PORT, function() {
 
 
 // Starts connection with mongoDB database
-mongoose.connect(MONGODB_URI || "mongodb://127.0.0.1:27017/todos");
+mongoose.connect(process.env.MONGODB_URI|| "mongodb://127.0.0.1:27017/todos");
 const connection = mongoose.connection;
 connection.once("open", function() {
   console.log("Successfully started connection to MongoDB database .... nice!");
