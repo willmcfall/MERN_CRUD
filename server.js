@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const todoRoutes = express.Router();
 const Todo = require("./model/todo.model");
 const PORT = (process.env.PORT || 4000);
+const path = require('path');
 
 // Starts server and listens for requests on defined port
 app.use(cors());
@@ -72,8 +73,6 @@ todoRoutes.route("/update/:id").post(function(req, res) {
   });
 });
 
-// HEROKU DEPLOYMENT configuration ... other imports 
-const path = require("path")
 
 // HEROKU DEPLOYMENT configuration ... other app.use middleware 
 app.use(express.static(path.join(__dirname, "client", "build")))
@@ -81,7 +80,7 @@ app.use(express.static(path.join(__dirname, "client", "build")))
 
 // HEROKU DEPLOYMENT configuration ... before your app.listen(), add this:
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 });
 
 

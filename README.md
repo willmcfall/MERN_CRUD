@@ -28,3 +28,5 @@ App Development
 App Deployment
 + https://coursework.vschool.io/deploying-mern-with-heroku/
 + https://www.youtube.com/watch?v=N42pkl-aIIQ
++ https://devcenter.heroku.com/articles/mongolab
++ https://www.youtube.com/watch?v=71wSzpLyW9k
