@@ -5,7 +5,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const todoRoutes = express.Router();
 const Todo = require("./model/todo.model");
-const PORT = process.env.PORT || 4010;
+const PORT = process.env.PORT;
 const path = require('path');
 
 // Starts server and listens for requests on defined port
