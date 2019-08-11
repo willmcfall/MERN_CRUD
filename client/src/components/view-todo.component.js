@@ -26,7 +26,7 @@ export default class ViewTodo extends Component {
   // Retrieves previously submitted values from the backend, following mounting
   componentDidMount() {
     axios
-      .get("http://localhost:4000/todos/")
+      .get("/todos/")
       .then(res => this.setState({ todos: res.data }))
       .catch(function(error) {
         console.log(error);
@@ -36,7 +36,7 @@ export default class ViewTodo extends Component {
     // Retrieves previously submitted values from the backend, following an update
     componentDidUpdate() {
       axios
-        .get("http://localhost:4000/todos/")
+        .get("/todos/")
         .then(res => this.setState({ todos: res.data }))
         .catch(function(error) {
           console.log(error);
