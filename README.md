@@ -30,3 +30,4 @@ App Deployment
 + https://www.youtube.com/watch?v=N42pkl-aIIQ
 + https://devcenter.heroku.com/articles/mongolab
 + https://www.youtube.com/watch?v=71wSzpLyW9k
++ https://www.youtube.com/watch?v=2E8eWUHJaNg&feature=youtu.be&list=PLOFmg4xbN_TPrB6w4rThsFanVxJI_SfER
