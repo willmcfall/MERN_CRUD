@@ -22,7 +22,7 @@ export default class EditTodo extends Component {
   // Retrieves previously submitted values from the backend for a specific id
   componentDidMount() {
     axios
-      .get("http://localhost:4000/todos/" + this.props.match.params.id)
+      .get("/todos/" + this.props.match.params.id)
       .then(res => {
         this.setState({
           todo_description: res.data.todo_description,
@@ -44,7 +44,7 @@ export default class EditTodo extends Component {
       todo_priority: this.state.todo_priority,
       todo_completed: this.state.todo_completed,
     };
-    axios.post('http://localhost:4000/todos/update/' + this.props.match.params.id, obj).then(res => console.log(res.data));
+    axios.post('/todos/update/' + this.props.match.params.id, obj).then(res => console.log(res.data));
     this.props.history.push('/');
   }
 
