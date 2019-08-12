@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import ViewTodo from "./components/view-todo.component";
 import EditTodo from "./components/edit-todo.component";
 import CreateTodo from "./components/create-todo.component";
+import Home from "./components/home.component"
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
             </div>
             <ul className="navbar-nav mr-auto">
               <li className="navbar-item">
-              <Link to="/" className="nav-link">View</Link>
+              <Link to="/view" className="nav-link">View</Link>
               </li>
               <li className="navbar-item">
               <Link to="/create" className="nav-link">Create</Link>
@@ -30,7 +31,10 @@ function App() {
         </nav>
 
         {/* When user navigates to / the viewtodo component is rendered */}
-        <Route path="/" exact component={ViewTodo} />
+        <Route path="/" exact component={Home} />
+
+        {/* When user navigates to / the viewtodo component is rendered */}
+        <Route path="/view/" exact component={ViewTodo} />
 
         {/* When user navigates to /edit/:id the edittodo component is rendered for that id */}
         <Route path="/edit/:id" component={EditTodo} />
