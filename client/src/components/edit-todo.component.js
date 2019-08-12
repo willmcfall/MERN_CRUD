@@ -45,7 +45,7 @@ export default class EditTodo extends Component {
       todo_completed: this.state.todo_completed,
     };
     axios.post('/todos/update/' + this.props.match.params.id, obj).then(res => console.log(res.data));
-    this.props.history.push('/');
+    this.props.history.push('/view/');
   }
 
 
