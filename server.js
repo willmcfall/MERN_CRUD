@@ -76,6 +76,26 @@ todoRoutes.route("/update/:id").post(function(req, res) {
 });
 
 
+// Creates the endpoint for delete todo by id from the Mongo database
+todoRoutes.route("/delete/:id").delete(function(req, res) {
+  Todo.findById(req.params.id, function(err, todo) {
+    if (!todo) res.status(404).send("data is not found");
+    else todo.todo_description = req.body.todo_description;
+    todo.todo_responsible = req.body.todo_responsible;
+    todo.todo_priority = req.body.todo_priority;
+    todo.todo_completed = req.body.todo_completed;
+
+    todo
+      .save()
+      .then(todo => {
+        res.json("Todo deleted");
+      })
+      .catch(err => {
+        res.status(400).send("Update not possible");
+      });
+  });
+});
+
 // Starts connection with mongoDB database
 mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/todos", { useNewUrlParser: true } );
 const connection = mongoose.connection;
