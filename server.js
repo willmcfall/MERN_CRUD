@@ -76,7 +76,7 @@ todoRoutes.route("/update/:id").post(function(req, res) {
 });
 
 // Creates the endpoint for delete todo by id from the Mongo database
-todoRoutes.route("/delete/:id").delete(function(req, res){
+todoRoutes.route("/delete/:id").delete(function(req, res) {
   Todo.findByIdAndRemove({ _id: req.params.id }).then(doc => {
     res.send(doc);
   });
