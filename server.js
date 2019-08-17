@@ -76,10 +76,20 @@ todoRoutes.route("/update/:id").post(function(req, res) {
 });
 
 // Creates the endpoint for delete todo by id from the Mongo database
-todoRoutes.route("/delete/:id").delete(function(req, res) {
-  Todo.findByIdAndRemove(req.params.id).then(doc => {
-    res.send(doc);
-  });
+todoRoutes.route("delete/:id").delete(function(req, res){
+  Todo.findByIdAndRemove(req.params.id)
+    .then((result) => {
+      res.json({
+        success: true,
+        msg: `It has been deleted.`,
+        result: {
+          _id: result._id,
+        }
+      });
+    })
+    .catch((err) => {
+      res.status(404).json({ success: false, msg: 'Nothing to delete.' });
+    });
 });
 
 // Starts connection with mongoDB database
