@@ -3,6 +3,8 @@ const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
+mongoose.set('useFindAndModify', false);
+mongoose.set('useNewUrlParser', true);
 const todoRoutes = express.Router();
 const Todo = require("./model/todo.model");
 const path = require("path");
@@ -31,7 +33,6 @@ todoRoutes.route("/").get(function(req, res) {
 // Creates the endpoint for retrieving todo by id from the Mongo database
 todoRoutes.route("/:id").get(function(req, res) {
   let id = req.params.id;
-
   Todo.findById(id, function(err, todo) {
     if (err) {
       console.log(err);
@@ -76,7 +77,7 @@ todoRoutes.route("/update/:id").post(function(req, res) {
 });
 
 // Creates the endpoint for delete todo by id from the Mongo database
-todoRoutes.route("delete/:id").delete(function(req, res){
+todoRoutes.route("/delete/:id").post(function(req, res){
   Todo.findByIdAndRemove(req.params.id)
     .then((result) => {
       res.json({
