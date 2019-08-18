@@ -32,8 +32,7 @@ todoRoutes.route("/").get(function(req, res) {
 
 // Creates the endpoint for retrieving todo by id from the Mongo database
 todoRoutes.route("/:id").get(function(req, res) {
-  let id = req.params.id;
-  Todo.findById(id, function(err, todo) {
+  Todo.findById({_id:req.params.id}, function(err, todo) {
     if (err) {
       console.log(err);
     } else {
@@ -78,7 +77,7 @@ todoRoutes.route("/update/:id").post(function(req, res) {
 
 // Creates the endpoint for delete todo by id from the Mongo database
 todoRoutes.route("/delete/:id").post(function(req, res){
-  Todo.findByIdAndRemove(req.params.id)
+  Todo.findByIdAndRemove({_id:req.params.id})
     .then((result) => {
       res.json({
         success: true,
