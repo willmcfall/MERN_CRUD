@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import ViewTodo from "./components/view-todo.component";
 import EditTodo from "./components/edit-todo.component";
 import CreateTodo from "./components/create-todo.component";
+import DeleteTodo from "./components/delete-todo.component";
 import Home from "./components/home.component"
 
 function App() {
@@ -38,6 +39,9 @@ function App() {
 
         {/* When user navigates to /edit/:id the edittodo component is rendered for that id */}
         <Route path="/edit/:id" component={EditTodo} />
+
+        {/* When user navigates to /delete/:id the deletetodo component is rendered for that id */}
+        <Route path="/delete/:id" component={DeleteTodo} />
 
         {/* When user navigates to /create the createtodo component is rendered */}
         <Route path="/create/" exact component={CreateTodo} />
